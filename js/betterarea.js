@@ -1,10 +1,11 @@
 function makeEditor(element) {
   var myEditor = new Editor($(element).find('textarea')[0]),
-  tabSize = '  ';
+    tabSize = '  ';
 
   var insert = function(chars, s) {
     myEditor.insert(chars, function() {
-      myEditor.select(s.end + 1, s.end + 1);
+      // move cusor past the wrapping
+      myEditor.select(s.end + 2, s.end + 2);
     });
     return false;
   };
@@ -12,17 +13,17 @@ function makeEditor(element) {
   myEditor.area.onkeydown = function(e) {
 
     var area = this,
-    sel = myEditor.selection();
+      sel = myEditor.selection();
 
     // Auto close for `(`
-      if (e.shiftKey && e.keyCode == 57) {
-        return insert('(' + sel.value + ')', sel);
-      }
+    if (e.shiftKey && e.keyCode == 57) {
+      return insert('(' + sel.value + ')', sel);
+    }
 
     // Auto close for `{`
-      if (e.shiftKey && e.keyCode == 219) {
-        return insert('{' + sel.value + '}', sel);
-      }
+    if (e.shiftKey && e.keyCode == 219) {
+      return insert('{' + sel.value + '}', sel);
+    }
 
     // Auto close for `[`
     if (e.keyCode == 219) {
@@ -59,7 +60,7 @@ function makeEditor(element) {
       // write a tag name without `<` or `>` then press your `Tab` key!
       if (sel.before.match(isTagName)) {
         var tagName = isTagName.exec(sel.before)[2],
-        before = sel.before.replace(isTagName, '$1');
+          before = sel.before.replace(isTagName, '$1');
 
         area.value = before + '<' + tagName + ' ></' + tagName + '>' + sel.after;
         myEditor.select(sel.start + 2, sel.start + 2);
@@ -81,7 +82,7 @@ function makeEditor(element) {
 
     if (e.keyCode == 13) {
       var getIndentBefore = /(^|\n)( +)(.*?)$/.exec(sel.before),
-      indentBefore = getIndentBefore ? getIndentBefore[2] : "";
+        indentBefore = getIndentBefore ? getIndentBefore[2] : "";
       if (sel.before.match(/[\[\{\(\<\>]$/) && sel.after.match(/^[\]\}\)\>\<]/)) {
         myEditor.insert('\n' + indentBefore + tabSize + '\n' + indentBefore, function() {
           myEditor.select(sel.start + indentBefore.length + tabSize.length + 1, sel.start + indentBefore.length + tabSize.length + 1);
@@ -91,6 +92,24 @@ function makeEditor(element) {
       myEditor.insert('\n' + indentBefore);
       return false;
     }
+
+    // markdown list completion
+    // // `Enter` key was pressed
+    // if (e.keyCode == 13) {
+    //   var isListItem = /(^|\n)( *?)([0-9]+\.|[\-\+\*]) (.*?)$/;
+    //   if (sel.before.match(isListItem)) {
+    //     var take = isListItem.exec(sel.before),
+    //       list = /[0-9]+\./.test(take[3]) ? parseInt(take[3], 10) + 1 + '.' : take[3]; // <ol> or <ul> ?
+    //     myEditor.insert('\n' + take[2] + list + ' ');
+    //     return false;
+    //   }
+    // }
+
+    // // `Backspace` was pressed
+    // if (e.keyCode == 8 && sel.value.length === 0 && sel.before.match(/( *?)([0-9]+\.|[\-\+\*]) $/)) {
+    //   myEditor.outdent('( *?)([0-9]+\.|[\-\+\*]) ');
+    //   return false;
+    // }
 
     // Right arrow was pressed
     if (e.keyCode == 39) {
@@ -123,7 +142,7 @@ function makeEditor(element) {
     },
     'ul-list': function() {
       var sel = myEditor.selection(),
-      added = "";
+        added = "";
       if (sel.value.length > 0) {
         myEditor.indent('', function() {
           myEditor.replace(/^[^\n\r]/gm, function(str) {
@@ -141,8 +160,8 @@ function makeEditor(element) {
     },
     'ol-list': function() {
       var sel = myEditor.selection(),
-      ol = 0,
-      added = "";
+        ol = 0,
+        added = "";
       if (sel.value.length > 0) {
         myEditor.indent('', function() {
           myEditor.replace(/^[^\n\r]/gm, function(str) {
@@ -161,9 +180,9 @@ function makeEditor(element) {
     },
     'link': function() {
       var sel = myEditor.selection(),
-      title = prompt('Link Title:', 'Link title goes here...'),
-      url = prompt('Link URL:', 'http://'),
-      placeholder = 'Your link text goes here...';
+        title = prompt('Link Title:', 'Link title goes here...'),
+        url = prompt('Link URL:', 'http://'),
+        placeholder = 'Your link text goes here...';
       if (url && url !== "" && url !== 'http://') {
         myEditor.wrap('[' + (sel.value.length === 0 ? placeholder : ''), '](' + url + (title !== "" ? ' \"' + title + '\"' : '') + ')', function() {
           myEditor.select(sel.start + 1, (sel.value.length === 0 ? sel.start + placeholder.length + 1 : sel.end + 1));
@@ -173,7 +192,7 @@ function makeEditor(element) {
     },
     'image': function() {
       var url = prompt('Image URL:', 'http://'),
-      alt = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')).replace(/[\-\_\+]+/g, " ").capitalize();
+        alt = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.')).replace(/[\-\_\+]+/g, " ").capitalize();
       alt = alt.indexOf('/') < 0 ? decodeURIComponent(alt) : 'Image';
       if (url && url !== "" && url !== 'http://') {
         myEditor.insert('\n\n![' + alt + '](' + url + ')\n\n');
