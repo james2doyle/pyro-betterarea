@@ -1,0 +1,3 @@
+[submodule "js/vendor"]
+	path = js/vendor
+	url = https://github.com/tovic/simple-text-editor-library

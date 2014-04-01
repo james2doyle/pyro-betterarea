@@ -1,0 +1,36 @@
+.icons-list.ui-sortable {
+  overflow: auto;
+}
+
+.icons-list {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+}
+
+.icons-list li {
+  padding: 10px;
+  float: left;
+  border-radius: 3px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.icons-list li:hover {
+  background: #fafafa;
+}
+
+.icons-list textarea {
+  width: 95%;
+}
+
+.icons-list label {
+  width: 100%;
+  display: block;
+}
+
+@media only screen and (min-width: 768px) {
+  .icons-list li {
+    width: 47%;
+  }
+}
