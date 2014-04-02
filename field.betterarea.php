@@ -64,7 +64,7 @@ class Field_betterarea
     /**
     * Pre Output
     *
-    * No PyroCMS tags in text input fields.
+    * Parse the area with Markdown
     *
     * @return string
     */
