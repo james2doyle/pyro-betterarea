@@ -3,6 +3,8 @@ pyro-betterarea
 
 A better textarea that matches braces, parens, backticks, and quotes. Also filled with Markdown helpers.
 
+![Screenshot of filed in action](https://raw.githubusercontent.com/james2doyle/pyro-betterarea/master/screen1.png)
+
 **this plugin wouldn't be possible without [tovic/simple-text-editor-library](https://github.com/tovic/simple-text-editor-library)**
 
 ### Why this area is a 'betterarea'
