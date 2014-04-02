@@ -1,3 +1,9 @@
+/**
+ * simple-text-editor-library by tovic
+ * https://github.com/tovic/simple-text-editor-library
+ * @param  {[type]} element [description]
+ * @return {[type]}         [description]
+ */
 function makeEditor(element) {
   var myEditor = new Editor($(element).find('textarea')[0]),
     tabSize = '  ';
@@ -246,7 +252,8 @@ function makeEditor(element) {
     }
   }
 
-  function click(elem) {
+  var $myButton = $(element).find('.editor-control a');
+  $myButton.each(function(index, elem) {
     var hash = elem.hash.replace('#', "");
     if (controls[hash]) {
       elem.onclick = function() {
@@ -254,14 +261,7 @@ function makeEditor(element) {
         return false;
       };
     }
-  }
-
-  var myButton = $(element).find('.editor-control a');
-
-  for (var i = 0, len = myButton.length; i < len; ++i) {
-    click(myButton[i]);
-    myButton[i].href = 'javascript:;';
-  }
+  });
 }
 
 $(function() {
