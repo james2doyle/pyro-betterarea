@@ -1,69 +1,36 @@
-pyro-blurb-field
+pyro-betterarea
 ===============
 
-Create small sections with title, image, and body content.
+A better textarea that matches braces, parens, backticks, and quotes. Also filled with Markdown helpers.
 
-![blurb field creation](http://ohdoylerules.com/wp-content/uploads/2013/03/Screen-Shot-2013-03-13-at-3.38.39-PM.png)
+**this plugin wouldn't be possible without [tovic/simple-text-editor-library](https://github.com/tovic/simple-text-editor-library)**
 
-![blurb field on page form](http://ohdoylerules.com/wp-content/uploads/2013/03/Screen-Shot-2013-03-13-at-3.38.21-PM.png)
+### Why this area is a 'betterarea'
 
-Iconss
---------
+* Markdown list completion
+* Bracket matching for \( \{ \[ " ' < \`
+* Easy buttons for:
+  * Bold and Italic
+  * Code
+  * Quote
+  * UL
+  * OL
+  * Link Helper (with title and url)
+  * Image Helper (with prompt)
+  * Headers (H1 H2 H3 H4 H5 H6)
+  * Horizontal Rule
+  * Undo and Redo
 
-* Pre-set the number of blurbs/items you want
-* Choose the folder for the image dropdown
-* Add a title, image and body for each item
-* Looping tags to output data
-* Includes 0 => None option to allow no image to be set
+### Usage
 
-Usage
------
+* Install the field into either the (shared\_addons|default)/field\_types folder.
+* Run `git submodule init` and `git submodule update` in that folder to make sure you are running the latest version of the parent lib.
 
-``` html
-{{ my_field_slug }}
-<fieldset id="item{{ id }}">
-  <legend>{{ title }}</legend>
-  <!-- check and see if the image id is not set to 0 which is none -->
-  {{ if image !== 0 }}
-  <img src="{{ files:image_url id=image }}">
-  {{ endif }}
-  <p>{{ body }}</p>
-</fieldset>
-{{ /my_field_slug }}
-```
-
-If there was 3 items, this would output:
-
-``` html
-<fieldset id="item1">
-  <legend>Item1</legend>
-  <img src="http://website.com/files/large/crazyid.jpg">
-  <p>Body Content for 1</p>
-</fieldset>
-<fieldset id="item2">
-  <legend>Item2</legend>
-  <img src="http://website.com/files/large/crazyid.jpg">
-  <p>Body Content for 2</p>
-</fieldset>
-<fieldset id="item3">
-  <legend>Item3</legend>
-  <img src="http://website.com/files/large/crazyid.jpg">
-  <p>Body Content for 3</p>
-</fieldset>
-```
-
-To Do
------
-
-* Add sorting/ordering
-* WYSIWYG Toggle
-
-License
--------
+### License
 
 (The MIT License)
 
-Copyright (c) 2013 James Doyle <james2doyle@gmail.com>
+Copyright (c) 2014 James Doyle <james2doyle@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
