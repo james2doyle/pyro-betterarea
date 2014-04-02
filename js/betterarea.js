@@ -1,8 +1,9 @@
 /**
- * simple-text-editor-library by tovic
+ * pyro-betterarea
+ * A better textarea that matches braces, parens, backticks, and quotes. Also filled with Markdown helpers.
+ * based on: simple-text-editor-library by tovic
  * https://github.com/tovic/simple-text-editor-library
- * @param  {[type]} element [description]
- * @return {[type]}         [description]
+ *
  */
 function makeEditor(element) {
   var myEditor = new Editor($(element).find('textarea')[0]),
