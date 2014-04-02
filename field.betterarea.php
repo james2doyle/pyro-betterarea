@@ -38,23 +38,23 @@ class Field_betterarea
       $options['value']	= $data['value'];
 
       $template = '<div class="editor-control">
-      <a href="#bold">Bold</a>
-      <a href="#italic">Italic</a>
-      <a href="#code">Code</a>
-      <a href="#code-block">Code Block</a>
-      <a href="#quote">Quote</a>
-      <a href="#ul-list"><abbr title="Unordered List">UL</abbr></a>
-      <a href="#ol-list"><abbr title="Ordered List">OL</abbr></a>
-      <a href="#link">Link</a>
-      <a href="#image">Image</a>
-      <a href="#h1">H1</a>
-      <a href="#h2">H2</a>
-      <a href="#h3">H3</a>
-      <a href="#h4">H4</a>
-      <a href="#h5">H5</a>
-      <a href="#h6">H6</a>
-      <a href="#hr">Horizontal Rule</a>
-      <a href="#undo">Undo</a>
+      <a href="#bold">Bold</a> |
+      <a href="#italic">Italic</a> |
+      <a href="#code">Code</a> |
+      <a href="#code-block">Code Block</a> |
+      <a href="#quote">Quote</a> |
+      <a href="#ul-list"><abbr title="Unordered List">UL</abbr></a> |
+      <a href="#ol-list"><abbr title="Ordered List">OL</abbr></a> |
+      <a href="#link">Link</a> |
+      <a href="#image">Image</a> |
+      <a href="#h1">H1</a> |
+      <a href="#h2">H2</a> |
+      <a href="#h3">H3</a> |
+      <a href="#h4">H4</a> |
+      <a href="#h5">H5</a> |
+      <a href="#h6">H6</a> |
+      <a href="#hr">Horizontal Rule</a> |
+      <a href="#undo">Undo</a> |
       <a href="#redo">Redo</a>
     </div>';
 
