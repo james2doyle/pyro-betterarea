@@ -38,24 +38,24 @@ class Field_betterarea
       $options['value']	= $data['value'];
 
       $template = '<div class="editor-control">
-      <a href="#bold">Bold</a> |
-      <a href="#italic">Italic</a> |
-      <a href="#code">Code</a> |
-      <a href="#code-block">Code Block</a> |
-      <a href="#quote">Quote</a> |
-      <a href="#ul-list"><abbr title="Unordered List">UL</abbr></a> |
-      <a href="#ol-list"><abbr title="Ordered List">OL</abbr></a> |
-      <a href="#link">Link</a> |
-      <a href="#image">Image</a> |
-      <a href="#h1">H1</a> |
-      <a href="#h2">H2</a> |
-      <a href="#h3">H3</a> |
-      <a href="#h4">H4</a> |
-      <a href="#h5">H5</a> |
-      <a href="#h6">H6</a> |
-      <a href="#hr">Horizontal Rule</a> |
-      <a href="#undo">Undo</a> |
-      <a href="#redo">Redo</a>
+      <a href="#bold">'.$this->CI->lang->line('streams:betterarea.bold').'</a> |
+      <a href="#italic">'.$this->CI->lang->line('streams:betterarea.italic').'</a> |
+      <a href="#code">'.$this->CI->lang->line('streams:betterarea.code').'</a> |
+      <a href="#code-block">'.$this->CI->lang->line('streams:betterarea.code_block').'</a> |
+      <a href="#quote">'.$this->CI->lang->line('streams:betterarea.quote').'</a> |
+      <a href="#ul-list"><abbr title="'.$this->CI->lang->line('streams:betterarea.ul').'">'.$this->CI->lang->line('streams:betterarea.ul_short').'</abbr></a> |
+      <a href="#ol-list"><abbr title="'.$this->CI->lang->line('streams:betterarea.ol').'">'.$this->CI->lang->line('streams:betterarea.ol_short').'</abbr></a> |
+      <a href="#link">'.$this->CI->lang->line('streams:betterarea.link').'</a> |
+      <a href="#image">'.$this->CI->lang->line('streams:betterarea.image').'</a> |
+      <a href="#h1">'.$this->CI->lang->line('streams:betterarea.h1').'</a> |
+      <a href="#h2">'.$this->CI->lang->line('streams:betterarea.h2').'</a> |
+      <a href="#h3">'.$this->CI->lang->line('streams:betterarea.h3').'</a> |
+      <a href="#h4">'.$this->CI->lang->line('streams:betterarea.h4').'</a> |
+      <a href="#h5">'.$this->CI->lang->line('streams:betterarea.h5').'</a> |
+      <a href="#h6">'.$this->CI->lang->line('streams:betterarea.h6').'</a> |
+      <a href="#hr">'.$this->CI->lang->line('streams:betterarea.hr').'</a> |
+      <a href="#undo">'.$this->CI->lang->line('streams:betterarea.undo').'</a> |
+      <a href="#redo">'.$this->CI->lang->line('streams:betterarea.redo').'</a>
     </div>';
 
       return '<div class="betterarea">'.$template.form_textarea($options).'</div>';
